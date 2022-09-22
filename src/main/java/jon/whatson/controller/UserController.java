@@ -36,8 +36,8 @@ public class UserController {
         }
     }
 
-    @PostMapping("/createUser")
-    public ResponseEntity<String> createUser(@RequestBody User user){
+    @PostMapping(value = "/createUser")
+    public ResponseEntity<String> createUser(User user){
         String msg="";
         if(userService.save(user)!=null) {
             msg="Oprettet bruger: "+user.getName();

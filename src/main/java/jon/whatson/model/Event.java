@@ -3,13 +3,16 @@ package jon.whatson.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data // ... hashCode()
+@Getter
+@Setter
 @Entity
 public class Event {
     @Id
@@ -19,9 +22,8 @@ public class Event {
     private Timestamp timestamp;
     //date kommer måske
     @ManyToOne
-    @JsonBackReference // pga. cirkulær reference i @RestController
-    @EqualsAndHashCode.Exclude // pga. hashCode() fra @Data
+    @JsonBackReference // pga. cirkulær reference i @RestController// pga. hashCode() fra @Data
     private Band band;
-   // @OneToMany(mappedBy = "event")
-   //  private Set<Review> reviews = new HashSet<>();
+    @OneToMany(mappedBy = "event")
+    private Set<Review> reviews = new HashSet<>();
 }

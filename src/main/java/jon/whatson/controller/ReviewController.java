@@ -6,7 +6,7 @@ import jon.whatson.model.Review;
 import jon.whatson.model.User;
 import jon.whatson.service.IBandService;
 import jon.whatson.service.IEventService;
-// import jon.whatson.service.IReviewService;
+import jon.whatson.service.IReviewService;
 import jon.whatson.service.IUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @RestController
 public class ReviewController {
-    /*
+
     private IReviewService reviewService;
 
     private IEventService eventService;
@@ -33,28 +33,20 @@ public class ReviewController {
     }
 
     @PostMapping("/createReview")
-    public ResponseEntity<String> createReview(@RequestBody Review review,
+    public ResponseEntity<String> createReview(Review review,
                                               @RequestParam Long eventID, @RequestParam Long userID){
         System.out.println("den går ind i mapping");
-        // 1. hent event
+        // Hent event og user
         Optional<Event> event_ = eventService.findById(eventID);
         Optional<User> user_ = userService.findById(userID);
-        if (event_.isPresent()) {
+        if (event_.isPresent() && user_.isPresent()) {
             review.setEvent(event_.get());
-            reviewService.save(review); // Måske ikke nødvendigt at save to gange.
+            review.setUser(user_.get());
+            reviewService.save(review);
             System.out.println("Event bliver checket for");
-            // 2. hent user
-            if (user_.isPresent()) {
-                review.setUser(user_.get());
-                reviewService.save(review);
-                System.out.println("User bliver checked for");
                 return new ResponseEntity<>("ok at oprette review", HttpStatus.OK);
             } else {
-                return new ResponseEntity<>("user ikke fundet", HttpStatus.OK);
-            }
-        } else {
-            return new ResponseEntity<>("event ikke fundet", HttpStatus.OK);
+            return new ResponseEntity<>("Ikke fundet", HttpStatus.OK);
         }
     }
-*/
 }

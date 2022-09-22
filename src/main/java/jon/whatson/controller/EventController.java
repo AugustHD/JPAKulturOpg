@@ -25,7 +25,7 @@ public class EventController {
     }
 
     @PostMapping("/createEvent")
-    public ResponseEntity<String> createEvent(@RequestBody Event event,
+    public ResponseEntity<String> createEvent(Event event,
                                               @RequestParam Long bandID){
         // 1. hent band
         Optional<Band> band_ = bandService.findById(bandID);

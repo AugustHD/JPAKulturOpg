@@ -24,6 +24,6 @@ public class User {
     )
     @JsonBackReference
     private Set<Venue> venuesLiked = new HashSet<>();
-   // @OneToMany(mappedBy = "user")
-  // private Set<Review> reviews = new HashSet<>();
+    @OneToMany(mappedBy = "user")
+    private Set<Review> reviews = new HashSet<>();
 }

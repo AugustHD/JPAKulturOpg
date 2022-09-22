@@ -3,9 +3,13 @@ package jon.whatson.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
 @Entity
 public class Review {
 
@@ -14,14 +18,11 @@ public class Review {
     Long id;
     String text;
     String rating; // Ikke sikker på hvilken datatype er bedst.
-    // Nedenunder ser ikke særlig godt ud.
     @ManyToOne
     @JsonBackReference
-    @EqualsAndHashCode.Exclude
     private Event event;
     @ManyToOne
     @JsonBackReference
-    @EqualsAndHashCode.Exclude
     private User user;
 
 }

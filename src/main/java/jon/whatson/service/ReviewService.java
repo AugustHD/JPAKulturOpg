@@ -1,4 +1,3 @@
-/*
 package jon.whatson.service;
 
 import jon.whatson.model.Review;
@@ -42,5 +41,3 @@ public class ReviewService implements IReviewService{
         return reviewRepository.findById(aLong);
     }
 }
-
- */
