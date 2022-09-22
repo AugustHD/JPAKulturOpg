@@ -1,7 +1,7 @@
-package jon.whatson;
+package jon.whatson.controller;
 
+import jon.whatson.model.Band;
 import jon.whatson.service.IBandService;
-import jon.whatson.service.IUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +21,9 @@ public class BandController {
     public ResponseEntity<String> createBand(@RequestBody Band band){
         String msg="";
         if(bandService.save(band)!=null) {
-            msg="Oprettet band: "+band.getBandName();
+            msg="Oprettet band: "+band.getName();
         }else {
-            msg="fejl i oprettelse af " + band.getBandName();
+            msg="fejl i oprettelse af " +band.getName();
         }
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }

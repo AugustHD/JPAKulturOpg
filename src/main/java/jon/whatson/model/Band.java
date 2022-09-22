@@ -1,33 +1,19 @@
-package jon.whatson;
+package jon.whatson.model;
 
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
 public class Band {
 
     @Id
-    private String bandName;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    public String getBandName() {
-        return bandName;
-    }
-
-    public void setBandName(String bandName) {
-        this.bandName = bandName;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
+    private String name;
+    @OneToMany(mappedBy = "band") // Event klassen har allerede mappet til
+    // denne band klasse. Defor behøver JPA ikke have mappe fra Band til Event.
+    private Set<Event> events = new HashSet<>();
 }

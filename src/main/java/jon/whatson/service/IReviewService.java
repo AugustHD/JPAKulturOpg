@@ -1,2 +1,9 @@
-package jon.whatson.service;public interface IReviewService {
+/*
+package jon.whatson.service;
+
+import jon.whatson.model.Review;
+
+public interface IReviewService extends ICrudService<Review, Long>{
 }
+
+ */

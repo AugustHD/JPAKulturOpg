@@ -1,2 +1,6 @@
-package jon.whatson.service;public interface IEventService {
+package jon.whatson.service;
+
+import jon.whatson.model.Event;
+
+public interface IEventService extends ICrudService<Event, Long>{
 }
